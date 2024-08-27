@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
+import com.example.afinal.utils.FirebaseUtil;
+
 public class SplashActivity extends AppCompatActivity {
 
     @Override
@@ -15,10 +17,15 @@ public class SplashActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                startActivity(new Intent(SplashActivity.this,LogInActivity.class));
+                if (FirebaseUtil.isLoggedIn()) {
+                    startActivity(new Intent(SplashActivity.this, MainActivity.class));
+                } else {
+                    startActivity(new Intent(SplashActivity.this, LogInActivity.class));
+                }
                 finish();
             }
-        },3000);
+
+        }, 3000);
     }
 
 }

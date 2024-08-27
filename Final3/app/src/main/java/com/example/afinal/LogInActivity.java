@@ -10,7 +10,11 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 
 import com.google.firebase.FirebaseApp;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.hbb20.CountryCodePicker;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class LogInActivity extends AppCompatActivity {
 CountryCodePicker cp;
@@ -30,6 +34,8 @@ ProgressBar progressBar;
         //to not see the progress bar at the start
         progressBar.setVisibility(View.GONE);
 
+        Map<String,String> data = new HashMap<>();
+        FirebaseFirestore.getInstance().collection("test").add(data);
 
         cp.registerCarrierNumberEditText(phoneInput);
 
