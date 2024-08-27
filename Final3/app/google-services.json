@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "743385588315",
+    "project_id": "salman-final",
+    "storage_bucket": "salman-final.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:743385588315:android:17a64dde0e38635051957e",
+        "android_client_info": {
+          "package_name": "com.example.afinal"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBe7DXXFm64WaKlJg_y3B1_mtVj1gfYwcA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
