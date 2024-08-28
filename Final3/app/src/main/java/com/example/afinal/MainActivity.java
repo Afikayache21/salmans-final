@@ -3,6 +3,7 @@ package com.example.afinal;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.ImageButton;
@@ -25,6 +26,10 @@ public class MainActivity extends AppCompatActivity {
         profileFregmant = new ProfileFregmant();
         bottomNavigationView = findViewById(R.id.bottom_navigation);
         searchBtn = findViewById(R.id.main_search_btn);
+        searchBtn.setOnClickListener((v) -> {
+            startActivity(new Intent(MainActivity.this,SearchUserActivity.class));
+        });
+
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
