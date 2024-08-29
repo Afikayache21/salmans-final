@@ -27,8 +27,13 @@ import com.google.firebase.Timestamp;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.Query;
 
+import org.json.JSONObject;
+
 import java.lang.reflect.Array;
 import java.util.Arrays;
+
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
 
 public class ChatActivity extends AppCompatActivity {
 
@@ -128,6 +133,19 @@ public class ChatActivity extends AppCompatActivity {
                     }
                 });
     }
+
+//    void sendNotification(String message){
+//
+//    }
+//
+//    void callApi(JSONObject jsonObject){
+//       MediaType JSON = MediaType.get("application/json");
+//       OkHttpClient client = new OkHttpClient();
+//
+//       String url = "https://fcm.googleapis.com/fcm/send";
+//
+//    }
+
     void getOrCreateChatRoomModel() {
         FirebaseUtil.getChatRoomReference(chatroomId).get().addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
