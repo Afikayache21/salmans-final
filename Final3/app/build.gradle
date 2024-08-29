@@ -45,11 +45,14 @@ dependencies {
 
     implementation(platform("com.google.firebase:firebase-bom:33.2.0"))
     implementation 'com.google.firebase:firebase-auth:23.0.0'
-    implementation 'com.google.firebase:firebase-messaging:24.0.1' // Ensure to use the latest version
+    implementation 'com.google.firebase:firebase-messaging:24.0.1'
 
     implementation 'com.firebaseui:firebase-ui-firestore:8.0.2'
 
     implementation 'com.github.dhaval2404:imagepicker:2.1'
 
     implementation 'com.github.bumptech.glide:glide:4.16.0'
+
+    implementation(platform("com.google.firebase:firebase-bom:33.2.0"))
+    implementation("com.google.firebase:firebase-appcheck-playintegrity")
 }

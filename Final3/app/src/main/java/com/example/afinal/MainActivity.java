@@ -9,11 +9,14 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.widget.ImageButton;
 
+import com.example.afinal.utils.FirebaseUtil;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.messaging.FirebaseMessaging;
+
+import com.google.firebase.appcheck.FirebaseAppCheck;
 
 
 
@@ -34,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
         searchBtn = findViewById(R.id.main_search_btn);
         searchBtn.setOnClickListener((v) -> {
             startActivity(new Intent(MainActivity.this,SearchUserActivity.class));
+
         });
 
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
@@ -59,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
         FirebaseMessaging.getInstance().getToken().addOnCompleteListener(task -> {
             if(task.isSuccessful()){
                 String token = task.getResult();
-                Log.i("My Token", token);
+                FirebaseUtil.currentUserDetails().update("fcmToken",token);
             }
         });
     }
