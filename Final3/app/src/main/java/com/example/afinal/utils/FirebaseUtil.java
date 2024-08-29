@@ -1,5 +1,7 @@
 package com.example.afinal.utils;
 
+import android.annotation.SuppressLint;
+
 import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
@@ -57,14 +59,21 @@ public class FirebaseUtil {
         }
     }
 
-    public static  String timestampToString(Timestamp timestamp){
-        return new SimpleDateFormat("HH:MM").format(timestamp.toDate());
-
+    @SuppressLint("SimpleDateFormat")
+    public static  String timestampToString(Timestamp timestamp) {
+        return new SimpleDateFormat("HH:mm").format(timestamp.toDate());
+    }
     public static StorageReference getCurrentProfilePicStorageRef(){
         return FirebaseStorage.getInstance().getReference().child("profile_pic")
                 .child(FirebaseUtil.currentUserId());
     }
-    public static void logout() {
+
+    public static StorageReference getOtherProfilePicStorageRef(String otherUserId){
+        return FirebaseStorage.getInstance().getReference().child("profile_pic")
+                .child(otherUserId);
+    }
+
+    public static void logout(){
         FirebaseAuth.getInstance().signOut();
 
     }

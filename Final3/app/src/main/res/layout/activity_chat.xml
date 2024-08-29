@@ -28,7 +28,7 @@
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_marginStart="10dp"
-            android:layout_toRightOf="@+id/back_btn"
+            android:layout_toLeftOf="@+id/back_btn"
             android:id="@+id/profile_pic_layout"/>
 
         <ImageButton
