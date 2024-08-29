@@ -18,6 +18,11 @@ public class FirebaseUtil {
     public static DocumentReference getChatRoomReference(String chatroomId){
         return FirebaseFirestore.getInstance().collection("chatrooms").document(chatroomId);
     }
+
+    public static CollectionReference getChatroomMessageRefrence(String chatroomId){
+        return getChatRoomReference(chatroomId).collection("chats");
+    }
+
     public static boolean isLoggedIn(){
         return currentUserId() != null;
     }
