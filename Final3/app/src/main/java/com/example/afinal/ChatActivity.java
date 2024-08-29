@@ -2,6 +2,7 @@ package com.example.afinal;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
@@ -10,15 +11,19 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.example.afinal.adapter.ChatRecyclerAdapter;
+import com.example.afinal.adapter.SearchUserRecyclerAdapter;
 import com.example.afinal.model.ChatMessageModel;
 import com.example.afinal.model.ChatRoomModel;
 import com.example.afinal.model.UserModel;
 import com.example.afinal.utils.AndoridUtil;
 import com.example.afinal.utils.FirebaseUtil;
+import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.Timestamp;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.Query;
 
 import java.lang.reflect.Array;
 import java.util.Arrays;
@@ -28,6 +33,7 @@ public class ChatActivity extends AppCompatActivity {
     UserModel otherUser;
     String chatroomId;
     ChatRoomModel chatRoomModel;
+    ChatRecyclerAdapter adapter;
     EditText messageInput;
     ImageButton sendMessageBtn;
     ImageButton backBtn;
@@ -64,6 +70,21 @@ public class ChatActivity extends AppCompatActivity {
         });
 
         getOrCreateChatRoomModel();
+        setupChatRecyclerView();
+    }
+
+    void setupChatRecyclerView(){
+        Query query = FirebaseUtil.getChatroomMessageRefrence(chatroomId)
+                .orderBy("timestamp", Query.Direction.DESCENDING);
+        FirestoreRecyclerOptions<ChatMessageModel> options = new FirestoreRecyclerOptions.Builder<ChatMessageModel>()
+                .setQuery(query, ChatMessageModel.class).build();
+
+        adapter = new ChatRecyclerAdapter(options, getApplicationContext());
+        LinearLayoutManager manager = new LinearLayoutManager(this);
+        manager.setReverseLayout(true);
+        recyclerView.setLayoutManager(manager);
+        recyclerView.setAdapter(adapter);
+        adapter.startListening();
     }
 
     void sendMessageToUser(String message){
