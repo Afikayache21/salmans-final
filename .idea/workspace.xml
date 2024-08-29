@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7c496047-a8f4-4d3d-8912-181d71a43a3e" name="Changes" comment="" />
+    <list default="true" id="7c496047-a8f4-4d3d-8912-181d71a43a3e" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Final3/app/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Final3/app/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -34,7 +37,7 @@
     "RunOnceActivity.cidr.known.project.marker": "true",
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
-    "git-widget-placeholder": "Afik`s-Brunch",
+    "git-widget-placeholder": "new",
     "last_opened_file_path": "C:/Users/HP/REACT/pythonProj/salmans-final/Final3"
   }
 }]]></component>
