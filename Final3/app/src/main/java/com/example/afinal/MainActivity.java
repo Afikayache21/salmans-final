@@ -5,29 +5,39 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.ImageButton;
 
+import com.example.afinal.utils.FirebaseUtil;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
+import com.google.firebase.messaging.FirebaseMessaging;
+
+import com.google.firebase.appcheck.FirebaseAppCheck;
+
+
 
 public class MainActivity extends AppCompatActivity {
 
     BottomNavigationView bottomNavigationView;
     ImageButton searchBtn;
     ChatFragment chatFragment;
-    ProfileFregmant profileFregmant;
+    ProfileFragment profileFregmant;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         chatFragment = new ChatFragment();
-        profileFregmant = new ProfileFregmant();
+        profileFregmant = new ProfileFragment();
         bottomNavigationView = findViewById(R.id.bottom_navigation);
         searchBtn = findViewById(R.id.main_search_btn);
         searchBtn.setOnClickListener((v) -> {
             startActivity(new Intent(MainActivity.this,SearchUserActivity.class));
+
         });
 
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
@@ -44,5 +54,17 @@ public class MainActivity extends AppCompatActivity {
         });
         bottomNavigationView.setSelectedItemId(R.id.menu_chat);
 
+
+        getFCMToken();
+
+    }
+
+    void getFCMToken(){
+        FirebaseMessaging.getInstance().getToken().addOnCompleteListener(task -> {
+            if(task.isSuccessful()){
+                String token = task.getResult();
+                FirebaseUtil.currentUserDetails().update("fcmToken",token);
+            }
+        });
     }
 }
