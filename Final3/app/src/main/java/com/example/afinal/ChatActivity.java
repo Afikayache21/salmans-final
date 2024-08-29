@@ -85,6 +85,16 @@ public class ChatActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(manager);
         recyclerView.setAdapter(adapter);
         adapter.startListening();
+
+        //פונקציה לגלילת המסך לתחתית כאשר שולחים הודעה
+        adapter.registerAdapterDataObserver(new RecyclerView.AdapterDataObserver() {
+            @Override
+            public void onItemRangeInserted(int positionStart, int itemCount) {
+                super.onItemRangeInserted(positionStart, itemCount);
+
+                recyclerView.smoothScrollToPosition(0);
+            }
+        });
     }
 
     void sendMessageToUser(String message){
