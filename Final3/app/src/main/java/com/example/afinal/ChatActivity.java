@@ -51,10 +51,10 @@ public class ChatActivity extends AppCompatActivity {
 
         otherUsername.setText(otherUser.getUsername());
 
-        getOnCreateChatRoomModel();
+        getOrCreateChatRoomModel();
     }
 
-    void getOnCreateChatRoomModel() {
+    void getOrCreateChatRoomModel() {
         FirebaseUtil.getChatRoomReference(chatroomId).get().addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
                 chatRoomModel = task.getResult().toObject(ChatRoomModel.class);

@@ -1,6 +1,6 @@
 package com.example.afinal.model;
 
-import java.sql.Timestamp;
+import com.google.firebase.Timestamp;
 import java.util.List;
 
 public class ChatRoomModel {
@@ -13,7 +13,11 @@ public class ChatRoomModel {
     }
 
 
-    public ChatRoomModel(String chatroomId, List<String> list, com.google.firebase.Timestamp now, String lastMessageSenderId) {
+    public ChatRoomModel(String chatroomId, List<String> userIds, Timestamp lastMessageTimeStamp, String lastMessageSenderId) {
+        this.chatRoomId = chatroomId;
+        this.userIds = userIds;
+        this.lastMessageTimestamp = lastMessageTimeStamp;
+        this.lastMessageSenderId = lastMessageSenderId;
     }
 
     public String getChatRoomId() {
