@@ -16,14 +16,14 @@ public class MainActivity extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
     ImageButton searchBtn;
     ChatFragment chatFragment;
-    ProfileFregmant profileFregmant;
+    ProfileFragment profileFregmant;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         chatFragment = new ChatFragment();
-        profileFregmant = new ProfileFregmant();
+        profileFregmant = new ProfileFragment();
         bottomNavigationView = findViewById(R.id.bottom_navigation);
         searchBtn = findViewById(R.id.main_search_btn);
         searchBtn.setOnClickListener((v) -> {
